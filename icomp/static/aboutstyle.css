@@ -1,0 +1,36 @@
+body
+ {
+    background-image: url(Images/aboutpage.jpeg);
+    height: 500px;
+    background-size: cover;
+ }
+/* .navbar-header
+{
+    position: relative;
+} */
+div.maincontainer h1
+{
+    display: flex;
+    justify-content: center;
+}
+   div.maincontainer
+{
+    border: 5px solid white;
+    border-radius:700px;
+    margin-top: 5%;
+    margin-left:25%;
+    margin-right:25%;
+    padding:35px;
+    background-image: url(Images/about2.jpg);
+}
+
+div.maincontainer ul{
+    color:#FFFFFF;
+    justify-content: left;
+}
+
+.container-fluid
+{
+    color:black;
+}
+
