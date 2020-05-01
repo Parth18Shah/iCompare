@@ -2721,22 +2721,22 @@ window.application = new Application();
 			</rect>
 		</svg>
 		<div id="Lorem_ipsum_dolor_sit_amet__co">
-			<span>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et</span>
+			<span>{{ news3.content }}</span>
 		</div>
 		<div id="Lorem_ipsum_dolor_sit_amet__co_p">
-			<span>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et</span>
+			<span>{{ news2.content }}</span>
 		</div>
 		<div id="Lorem_ipsum_dolor_sit_amet__co_q">
-			<span>Lorem ipsum dolor sit amet, consetetur sadipscing elitr,<br/> sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.t vero eos et accusam et justo duo</span>
+			<span>{{ news1.content }}</span>
 		</div>
 		<div id="Headline_1">
-			<span>Headline 1</span>
+			<span>{{ news1.title }}</span>
 		</div>
 		<div id="Headline_2">
-			<span>Headline 2</span>
+			<span>{{ news2.title }}</span>
 		</div>
 		<div id="Headline_3">
-			<span>Headline 3</span>
+			<span>{{ news3.title }}</span>
 		</div>
 		<div id="Technology_News_">
 			<span>Technology News</span><br>
@@ -2752,6 +2752,9 @@ window.application = new Application();
 		{% if current_user.is_authenticated %}
 		<div id="Login">
 			<a style="color: #FFFFFF" href="{{ url_for('logout') }}"><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>
+		</div>
+		<div id="About">
+			<a style="color: #FFFFFF" href="{{ url_for('about') }}"><span>About</span></a>
 		</div>
 		<div id="Product_List">
 			<a style="color: #FFFFFF" href="{{ url_for('products') }}"><span>Product List</span></a>

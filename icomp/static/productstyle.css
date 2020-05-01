@@ -1,6 +1,6 @@
 body
 {
-    background-image: url(Images/productpage.png);
+    background-image: url(pics/productpage.png);
     height: 500px;
     background-size: cover;
     /* font-family: 'Ubuntu', sans-serif; */
@@ -55,4 +55,23 @@ hr {
 {
     background-color: #555555;
     color: white;
+}
+
+.bg-modal{
+    width:100%;
+    height: 100%;
+    background-color:rgba(0,0,0,0.7);
+    position: absolute;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-content: center; 
+}
+.modal-content{
+    width: 500px;
+    height: 300px;
+    background-color: white;
+    border-radius: 4px;
+    text-align: center;
+    padding: 20px;
 }

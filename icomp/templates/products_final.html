@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
     <!-- <link href="css/bootstrap.min.css" rel="stylesheet" >  -->
-    <link rel="stylesheet" href="productstyle.css">
+    <link rel="stylesheet" href="{{ url_for('static' ,filename='productstyle.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital@1&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@600&display=swap" rel="stylesheet">
     <title>iCompare | Products</title>
@@ -37,23 +37,41 @@
           </div>
         </li>
       </ul>
-      <ul class="navbar-nav">
+      {% if current_user.is_authenticated %}
+        <ul class="nav navbar-nav navbar-right">
           <li class="nav-item">
-            <a class="nav-link" href="index.html"><span class="glyphicon glyphicon-home"></span> Home</a>
+              <a class="nav-link" href="{{ url_for('home') }}"><span class="glyphicon glyphicon-home"></span> Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="about.html"><span class="glyphicon glyphicon-exclamation-sign"></span> About</a>
+              <a class="nav-link" href="{{ url_for('about') }}"><span class="glyphicon glyphicon-home"></span> About</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#"><span class="glyphicon glyphicon-user"></span> Sign up</a>
+              <a class="nav-link" href="{{ url_for('logout') }}"><span class="glyphicon glyphicon-log-out"></span> Logout</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a>
-          </li>
-      </ul>
+        </ul>
+      {% else %}
+        <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('home') }}"><span class="glyphicon glyphicon-home"></span> Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('about') }}"><span class="glyphicon glyphicon-exclamation-sign"></span> About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('signup') }}"><span class="glyphicon glyphicon-user"></span> Sign up</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('login') }}"><span class="glyphicon glyphicon-log-in"></span> Login</a>
+            </li>
+        </ul>
+      {% endif %}
     </div>
   </nav>
-
+<!-- <div class = "bg-modal">
+  <div class = "modal-content">
+    <h1>Hello</h1>
+  </div>
+</div> -->
 <div class="container mt-5">
   <div class="card-deck">
     <div class="card cardSet1 text-white">
@@ -91,7 +109,9 @@
       <h5 class="class-subtitle">Sometext</h5>
       <p>CLICK THE BUTTON BELOW TO VIEW A GRAPH BASED ON THE PRODUCT'S PREVIOUS PRICE</p>
       <!-- <a href="#" class="btn btn-primary">Button</a> -->
+    <form action="/download_graph" method='POST'>
     <button class="button button5">Give graph</button>
+    </form>
     </div>
   </div>
     <div class="card cardSet2 text-white text-center">
@@ -100,15 +120,20 @@
       <hr>
       <h5 class="class-subtitle">Sometext</h5>
       <p>CLICK THE BUTTON BELOW TO VIEW THE FUTURE PREDICTION BASED ON THE YOUR INPUT</p>
-      <form action="/action_page.php">
+      <form action="/predict" method="POST">
         <label for="prediction">Input:</label>
         <input type="date" id="prediction" name="prediction">
         <input type="submit">
+        {% if pred %}
+          <h5>Prediction on {{ date }} = Rs.{{ pred }}</h5>
+        {% endif %}
       </form>
     </div>
   </div>
   </div>
 </div>
+
+
 
 
     <!-- jQuery -->

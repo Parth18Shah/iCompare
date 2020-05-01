@@ -1,6 +1,6 @@
 body
  {
-    background-image: url(Images/aboutpage.jpeg);
+    background-image: url('pics/aboutpage.jpeg');
     height: 500px;
     background-size: cover;
  }
@@ -21,7 +21,7 @@ div.maincontainer h1
     margin-left:25%;
     margin-right:25%;
     padding:35px;
-    background-image: url(Images/about2.jpg);
+    background-image: url(pics/about2.jpg);
 }
 
 div.maincontainer ul{
