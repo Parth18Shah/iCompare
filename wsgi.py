@@ -1,0 +1,1 @@
+from icomp import app

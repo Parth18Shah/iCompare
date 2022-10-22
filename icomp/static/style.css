@@ -6,7 +6,7 @@
 
 * { margin: 0; padding: 0; }
 html { overflow-y: scroll; }
-body { font: 12px/1.4 Helvetica, sans-serif; background: #333; color: #333; }
+body { font: 12px/1.4 Helvetica, sans-serif; background: #333; color: #333; padding: 100px, }
 .group:after { visibility: hidden; display: block; font-size: 0; content: " "; clear: both; height: 0; }
 .group { display: inline-block; clear: both; }
 /* start commented backslash hack \*/ * html .group { height: 1%; } .group { display: block; } /* close commented backslash hack */
@@ -75,4 +75,5 @@ p { margin: 0 0 15px 0; }
 	justify-content: center;
 	padding-left:20px;
 } */
+
 footer { color: #999; margin: 0 auto; width: 500px; }

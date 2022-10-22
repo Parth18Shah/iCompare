@@ -7,9 +7,9 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="home.css">
-    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital@1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='homestyle.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@600&display=swap" rel="stylesheet">
+    <title>iCompare | Home</title>
 </head>
 <body>
     <nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
@@ -17,33 +17,15 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="collapse_target">
-      <a class="navbar-brand" href="index.html">iCompare</a>
-      <!-- <form class="form-inline ">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      </form> -->
-      <!-- <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-        <li class="nav-item dropdown active">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Products list</a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <a class="dropdown-item" href="#">Product1</a>
-            <a class="dropdown-item" href="#">Product2</a>
-            <a class="dropdown-item" href="#">Product3</a>
-          </div>
-        </li>
-      </ul> -->
-<!--        keep the below ul tag so that all the options on the navbar move to the right-->
+      <a class="navbar-brand" href="{{ url_for('home') }}">iCompare</a>
       <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
         <li class="nav-item">
         </li>
       </ul>
-      <!-- {% if current_user.is_authenticated %} -->
-        <!-- <ul class="nav navbar-nav navbar-right">
+      {% if current_user.is_authenticated %}
+        <ul class="nav navbar-nav navbar-right">
           <li class="nav-item">
-            <a class="nav-link" href="{{ url_for('home') }}"> Products</a>
-          </li>
-          <li class="nav-item">
-              <a class="nav-link" href="{{ url_for('home') }}"><span class="glyphicon glyphicon-home"></span> Home</a>
+            <a class="nav-link" href="{{ url_for('products') }}"> Products</a>
           </li>
           <li class="nav-item">
               <a class="nav-link" href="{{ url_for('about') }}"><span class="glyphicon glyphicon-home"></span> About</a>
@@ -51,14 +33,11 @@
           <li class="nav-item">
               <a class="nav-link" href="{{ url_for('logout') }}"><span class="glyphicon glyphicon-log-out"></span> Logout</a>
           </li>
-        </ul> -->
-      <!-- {% else %} -->
+        </ul> 
+      {% else %}
         <ul class="nav navbar-nav navbar-right">
             <li class="nav-item">
-            <a class="nav-link" href="{{ url_for('home') }}"> Products</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{{ url_for('home') }}"><span class="glyphicon glyphicon-home"></span> Home</a>
+            <a class="nav-link" href="{{ url_for('products') }}"> Products</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{{ url_for('about') }}"><span class="glyphicon glyphicon-exclamation-sign"></span> About</a>
@@ -70,87 +49,47 @@
               <a class="nav-link" href="{{ url_for('login') }}"><span class="glyphicon glyphicon-log-in"></span> Login</a>
             </li>
         </ul>
-      <!-- {% endif %} -->
+      {% endif %}
     </div>
   </nav>
   <div class="container mt-5">
     <div class="card-deck">
       <div class="card cardSet1 text-black">
         <div class="card-body">
-        <h3 class="class-title" style="text-align: center;">News headline one</h3>
+        <h3 class="class-title" style="text-align: center;">{{ n1_title }}</h3>
         <hr>
         <h5 class="class-subtitle">Subheadline</h5>
-        <p>Snug do sold mr it if such. Terminated uncommonly at at estimating. Man behaviour met moonlight extremity acuteness direction.</p>
-        <!-- <form action="/download_graph" method='POST'>
-          <button class="button button5">Read more</button>
-        </form> -->
-        <button class="button1" style="margin-left: 43.5%;"><span>Read more </span></button>
-      </div>
-    </div>
-      <!-- <div class="card cardSet2 text-white">
-        <div class="card-body">
-        <img src="{{ url_for('static', filename='pics/flipkart2.jpg') }}" class="img-fluid" style="border-radius: 3rem; width: 20rem;margin-left: 6.5rem;">
-        <h3 class="class-title" style="text-align: center;">Product name:asasdadaad</h3>
-        <hr>
-        <h5 class="class-subtitle">Product info:</h5>
-        <p>Snug do sold mr it if such. Terminated uncommonly at at estimating. Man behaviour met moonlight extremity acuteness direction.</p>
-        <hr>
-        <h5 style="text-align: center;">Cost price:12345 Rupees</h5>
-      </div>
-    </div> -->
-    </div>
-  </div>
-
-
-  <div class="container mt-5">
-    <div class="card-deck">
-      <div class="card cardSet1 text-black text-center">
-        <div class="card-body">
-        <h3 class="class-title" style="text-align: center;">News headline two</h3>
-        <hr>
-        <h5 class="class-subtitle">Subheadline</h5>
-        <p>Snug do sold mr it if such. Terminated uncommonly at at estimating. Man behaviour met moonlight extremity acuteness direction.</p>
-        <!-- <a href="#" class="btn btn-primary">Button</a> -->
-        <button class="button1"><span>Read more </span></button>
-      </div>
-    </div>
-      <div class="card cardSet1 text-black text-center">
-        <div class="card-body">
-          <h3 class="class-title" style="text-align: center;">News headline three</h3>
-          <hr>
-          <h5 class="class-subtitle">Subheadline</h5>
-          <p>Snug do sold mr it if such. Terminated uncommonly at at estimating. Man behaviour met moonlight extremity acuteness direction.</p>
-          <button class="button1"><span>Read more </span></button>
+        <p>{{ n1_content }}</p>
+        
+        <button class="button1" style="margin-left: 43.5%;" onclick="location.href='{{ n1_link }}';"><span>Read more </span></button>
       </div>
     </div>
     </div>
   </div>
-
   <div class="container mt-5">
     <div class="card-deck">
-      <div class="card cardSet1 text-black text-center">
+      <div class="card cardSet1 text-black">
         <div class="card-body">
-        <h3 class="class-title" style="text-align: center;">News headline four</h3>
+        <h3 class="class-title" style="text-align: center;">{{ n2_title }}</h3>
         <hr>
         <h5 class="class-subtitle">Subheadline</h5>
-        <p>Snug do sold mr it if such. Terminated uncommonly at at estimating. Man behaviour met moonlight extremity acuteness direction.</p>
-        <!-- <a href="#" class="btn btn-primary">Button</a> -->
-        <button class="button1"><span>Read more </span></button>
-      <!-- <form action="/download_graph" method='POST'>
-      <button class="button button5">Read more</button>
-      </form> -->
+        <p>{{ n2_content }}</p>
+        
+        <button class="button1" style="margin-left: 43.5%;" onclick="location.href='{{ n2_link }}';"><span>Read more </span></button>
       </div>
     </div>
-      <div class="card cardSet1 text-black text-center">
+    </div>
+  </div>
+  <div class="container mt-5">
+    <div class="card-deck">
+      <div class="card cardSet1 text-black">
         <div class="card-body">
-          <h3 class="class-title" style="text-align: center;">News headline five</h3>
-          <hr>
-          <h5 class="class-subtitle">Subheadline</h5>
-          <p>Snug do sold mr it if such. Terminated uncommonly at at estimating. Man behaviour met moonlight extremity acuteness direction.</p>
-          <button class="button1"><span>Read more </span></button>
-        <!-- <form action="/download_graph" method='POST'>
-          <button class="button button5">Read more</button>
-          </form> -->
+        <h3 class="class-title" style="text-align: center;">{{ n3_title }}</h3>
+        <hr>
+        <h5 class="class-subtitle">Subheadline</h5>
+        <p>{{ n3_content }}</p>
+        
+        <button class="button1" style="margin-left: 43.5%;" onclick="location.href='{{ n3_link }}';"><span>Read more </span></button>
       </div>
     </div>
     </div>

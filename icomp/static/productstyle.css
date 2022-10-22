@@ -13,7 +13,7 @@ hr {
     position: relative;
     border: none;
     height: 0.5px;
-    background:white;
+    background:black;
     /* margin-bottom: 50px;  */
 }
 
@@ -30,12 +30,14 @@ hr {
 
 .cardSet1
 {
-    background-color:#FF6347;
+    /*background-color:#FF6347;*/
+    background-color: lightgrey;
 }
 
 .cardSet2
 {
-    background-color:#FF6347;
+    /*background-color:#FF6347;*/
+    background-color: lightgrey;
 }
 
 .navbar

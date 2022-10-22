@@ -20,20 +20,20 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="collapse_target">
-      <a class="navbar-brand" href="index.html">iCompare
+      <a class="navbar-brand" href="{{ url_for('home') }}">iCompare
         <!-- <img src="Images/logo.png" width="30" height="30" alt=""> -->
       </a>
-      <form class="form-inline ">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <form class="form-inline " action="/products" method="POST">
+        <input class="form-control mr-sm-2" type="search" name="product" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
       </form>
       <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
         <li class="nav-item dropdown active">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Products list</a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <a class="dropdown-item" href="#">Product1</a>
-            <a class="dropdown-item" href="#">Product2</a>
-            <a class="dropdown-item" href="#">Product3</a>
+            <a class="dropdown-item" href="#">iphone 7</a>
+            <a class="dropdown-item" href="#">iphone 10</a>
+            <a class="dropdown-item" href="#">iphone</a>
           </div>
         </li>
       </ul>
@@ -74,26 +74,32 @@
 </div> -->
 <div class="container mt-5">
   <div class="card-deck">
-    <div class="card cardSet1 text-white">
+    <div class="card cardSet1 text-black">
       <div class="card-body">
-      <img src="{{ url_for('static', filename='pics/amazon.png') }}" class="img-fluid" style="border-radius: 3rem; width: 20rem;margin-left: 6.5rem;">
-      <h3 class="class-title" style="text-align: center;">Product name:asasdadaad</h3>
+      <img src="{{ url_for('static', filename='pics/amazon.png') }}" class="img-fluid" style="border-radius: 3rem; width: 100%;margin: auto;padding: 3%;">
+      <h3 class="class-title" style="text-align: center;">Product name:{%if amazon_name%}{{amazon_name}} {% endif %}</h3>
       <hr>
       <h5 class="class-subtitle">Product info:</h5>
-      <p>Snug do sold mr it if such. Terminated uncommonly at at estimating. Man behaviour met moonlight extremity acuteness direction.</p>
+      {%if amazon_des%}
+        {%for des in amazon_des%}
+          <p>{{des}}</p>
+        {% endfor %}
+      {% endif %}
       <hr>
-      <h5 style="text-align: center;">Cost price:12345 Rupees</h5>
+      <h5 style="text-align: center;">Cost price:{%if amazon_price %}{{amazon_price}} {% endif %} {% if not amazon_price == "Currently unavailable" %}Rupees {% endif %}</h5>
     </div>
   </div>
-    <div class="card cardSet2 text-white">
+    <div class="card cardSet2 text-black">
       <div class="card-body">
-      <img src="{{ url_for('static', filename='pics/flipkart2.jpg') }}" class="img-fluid" style="border-radius: 3rem; width: 20rem;margin-left: 6.5rem;">
-      <h3 class="class-title" style="text-align: center;">Product name:asasdadaad</h3>
+      <img src="{{ url_for('static', filename='pics/flipkart2.jpg') }}" class="img-fluid" style="border-radius: 3rem; width: 100%;margin: auto;padding: 3%;">
+      <h3 class="class-title" style="text-align: center;">Product name:{{flip_name}}</h3>
       <hr>
       <h5 class="class-subtitle">Product info:</h5>
-      <p>Snug do sold mr it if such. Terminated uncommonly at at estimating. Man behaviour met moonlight extremity acuteness direction.</p>
+      {% for des in flip_des %}
+      <p>{{des}}</p>
+      {% endfor %}
       <hr>
-      <h5 style="text-align: center;">Cost price:12345 Rupees</h5>
+      <h5 style="text-align: center;">Cost price:{{flip_price}} Rupees</h5>
     </div>
   </div>
   </div>
@@ -102,7 +108,7 @@
 
 <div class="container mt-5">
   <div class="card-deck">
-    <div class="card cardSet1 text-white text-center">
+    <div class="card cardSet1 text-black text-center">
       <div class="card-body">
       <h3 class="class-title" style="text-align: center;">FOR GRAPH</h3>
       <hr>
@@ -114,13 +120,13 @@
     </form>
     </div>
   </div>
-    <div class="card cardSet2 text-white text-center">
+    <div class="card cardSet2 text-black text-center">
       <div class="card-body">
       <h3 class="class-title" style="text-align: center;">FOR PREDICTION</h3>
       <hr>
       <h5 class="class-subtitle">Sometext</h5>
       <p>CLICK THE BUTTON BELOW TO VIEW THE FUTURE PREDICTION BASED ON THE YOUR INPUT</p>
-      <form action="/predict" method="POST">
+      <form action="{{ url_for('predict') }}" method="POST">
         <label for="prediction">Input:</label>
         <input type="date" id="prediction" name="prediction">
         <input type="submit">

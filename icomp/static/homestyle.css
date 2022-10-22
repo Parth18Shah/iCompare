@@ -10,9 +10,12 @@
 
 body
 {
-    background-image: url(indexwallpaper.png);
-    height: 500px;
+    background-image: url('pics/indexwallpaper.png');
+    height: auto;
+    /*min-height: 100%;*/
     background-size: cover;
+    /* background-repeat: no-repeat; */
+    background-position: center;
     font-family: 'Dosis', sans-serif;
     
 
@@ -43,12 +46,12 @@ hr {
 
 .cardSet1
 {
-    background-color:lightskyblue;
+    background-color:lightgrey
 }
 
 .cardSet2
 {
-    background-color:lightskyblue;
+    background-color:lightgrey;
 }
 
 .navbar
